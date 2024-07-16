@@ -1,0 +1,24 @@
+"use strict";
+const theads = document.querySelectorAll("th");
+const tbody = document.querySelector("table tbody");
+const trArr = [
+    ...tbody.querySelectorAll("tr")
+];
+function sortColumns(index) {
+    trArr.sort((a, b)=>{
+        const trA = a.cells[index].textContent;
+        const trB = b.cells[index].textContent;
+        return trA.localeCompare(trB, undefined, {
+            numeric: true
+        });
+    });
+    tbody.innerHTML = "";
+    trArr.forEach((tr)=>tbody.append(tr));
+}
+theads.forEach((thead, index)=>{
+    thead.addEventListener("click", ()=>{
+        sortColumns(index);
+    });
+});
+
+//# sourceMappingURL=index.f75de5e1.js.map
